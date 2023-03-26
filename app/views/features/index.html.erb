@@ -1,0 +1,9 @@
+<h1>features</h1>
+
+<%= link_to "New Feature", new_feature_path %>
+
+<ul>
+  <% @result.each do |item| %>
+    <li><%= item[:flag] %> - resources count: <%= item[:resources_count] %> </li>
+  <% end %>
+</ul>

@@ -1,0 +1,7 @@
+<h2>Create new Feature</h2>
+
+<%= form_with url: features_path do |form| %>
+  <%= form.label :flag, "Flag:" %>
+  <%= form.text_field :flag %>
+  <%= form.submit "Create" %>
+<% end %>

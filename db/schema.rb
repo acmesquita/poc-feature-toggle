@@ -23,14 +23,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_26_163205) do
 
   create_table "features", force: :cascade do |t|
     t.string "flag"
+    t.integer "feature_resources_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["feature_resources_id"], name: "index_features_on_feature_resources_id"
   end
 
   create_table "resources", force: :cascade do |t|
     t.string "uid"
+    t.integer "feature_resources_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["feature_resources_id"], name: "index_resources_on_feature_resources_id"
   end
 
   add_foreign_key "feature_resources", "features"
