@@ -1,24 +1,21 @@
-# README
+## POC Feature Toggle with Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Getting Starting
 
-Things you may want to cover:
+Install dependencies
 
-* Ruby version
+```
+bundle install
+```
 
-* System dependencies
+Prepare database
 
-* Configuration
+```
+rails db:prepare
+```
 
-* Database creation
+Up server
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+rails s
+```
