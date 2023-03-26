@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class FeatureRepositoryTest < ActiveSupport::TestCase
+  ## FeatureRepository.find_by_flag
   test "find feature by flag" do
     Feature.create(flag: 'flag')
 
@@ -15,5 +16,18 @@ class FeatureRepositoryTest < ActiveSupport::TestCase
     result = FeatureRepository.find_by_flag('invalid_flag')
 
     assert_nil result
+  end
+
+  ## FeatureRepositoryTest.create
+  test "create feature with valid params" do
+    result = FeatureRepository.create('flag')
+
+    assert result.id
+  end
+
+  test "no create feature with valid inparams" do
+    result = FeatureRepository.create(nil)
+
+    assert_not result.id
   end
 end
