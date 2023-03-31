@@ -1,10 +1,8 @@
 class FeaturesController < ApplicationController
 
   def index
-    @result = ListAllFeatures.perfom
+    @result = ::ListAllFeatures.perfom
   end
-
-  def new; end
 
   def create
     @feature = CreateFeature.perfom(params)
