@@ -14,8 +14,26 @@ Prepare database
 rails db:prepare
 ```
 
-Up server
+Start server
 
 ```
 rails s
+```
+
+Or you can using Docker
+
+```
+docker compose build
+```
+
+Prepare database
+
+```
+docker compose run --rm web bundle exec rails db:prepare
+```
+
+Start server
+
+```
+docker compose up
 ```
