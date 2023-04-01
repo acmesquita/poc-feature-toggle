@@ -1,4 +1,5 @@
 class FeaturesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @result = ::ListAllFeatures.perfom

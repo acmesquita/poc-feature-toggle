@@ -1,4 +1,6 @@
 class FeatureResourcesController < ApplicationController
+  before_action :authenticate_user!
+
   def destroy
     @result = ::DisconectResourceToFeature.perfom(params)
 

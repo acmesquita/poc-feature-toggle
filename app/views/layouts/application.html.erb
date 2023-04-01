@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="h-full bg-gray-100">
   <head>
-    <title>Poc Toggle</title>
+    <title>Feature Toggle</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -17,14 +17,19 @@
         <div class="flex h-16 items-center justify-between">
           <div class="flex items-center">
             <div class="flex-shrink-0">
-              <img class="h-8 w-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+              <img class="h-8 w-8" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="Your Company">
             </div>
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <a href="/" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Features</a>
+                <% if user_signed_in? %>
+                  <a href="/" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Features</a>
+                <% end %>
               </div>
             </div>
+          </div>
+          <div>
+            <%= button_to "Sign out", destroy_user_session_path, method: :delete, class:"text-white rounded-md px-3 py-2 text-sm font-medium" %>
           </div>
         </div>
       </div>
@@ -33,13 +38,24 @@
       <div class="md:hidden" id="mobile-menu">
         <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
           <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-          <a href="/" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Features</a>
+          <% if user_signed_in? %>
+            <a href="/" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Features</a>
+          <% end %>
         </div>
       </div>
     </nav>
     <main class="p-8">
       <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-        <!-- Your content -->
+        <% if notice %>
+          <div class="mb-8 bg-indigo-100 border rounded border-indigo-500 text-indigo-700 px-4 py-3" role="alert">
+            <p><%= notice %></p>
+          </div>
+        <% end %>
+        <% if alert %>
+          <div class="mb-8 bg-rose-100 border rounded border-rose-500 text-rose-700 px-4 py-3" role="alert">
+            <p class="text-sm"><%= alert %><p>
+          </div>
+        <% end %>
         <%= yield %>
       </div>
     </main>
