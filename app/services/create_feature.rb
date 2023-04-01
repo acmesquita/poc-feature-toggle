@@ -6,7 +6,7 @@ class CreateFeature
     feature = FeatureRepository.find_by_flag(params[:flag]) || FeatureRepository.create(params[:flag])
  
     resource_ids.map do |resource_id|
-      FeatureResourceRepository.create(feature.id, resource_id)
+      FeatureResourceRepository.find_or_create(feature.id, resource_id)
     end
 
     feature
