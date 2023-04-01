@@ -17,7 +17,7 @@ rails db:prepare
 Start server
 
 ```
-rails s
+./bin/dev
 ```
 
 Or you can using Docker
