@@ -4,6 +4,10 @@ class ListAllFeaturesPresenter
   end
 
   def call
-    @features.map { |feature| { flag: feature.flag, resources_count: feature.feature_resources.count }}
+    @features.map { |feature| {
+      id: feature.id,
+      flag: feature.flag,
+      resources_count: feature.feature_resources.count
+    }}
   end
 end

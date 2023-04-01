@@ -4,6 +4,10 @@ class FeaturesController < ApplicationController
     @result = ::ListAllFeatures.perfom
   end
 
+  def show
+    @feature = ::FindFeature.perfom(params[:id])
+  end
+
   def create
     @feature = CreateFeature.perfom(params)
 

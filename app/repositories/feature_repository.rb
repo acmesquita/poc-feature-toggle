@@ -10,4 +10,8 @@ class FeatureRepository
   def self.find_all
     Feature.all
   end
+
+  def self.find(id)
+    Feature.find(id)
+  end
 end

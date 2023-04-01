@@ -1,0 +1,33 @@
+<div class="flex items-center justify-between">
+  <h1 class="font-bold text-3xl text-cyan-900"><%= @feature.flag %></h1>
+
+  <%= link_to "Back", features_path, class:"p-3 rounded border border-cyan-900 w-[150px] text-center hover:bg-cyan-900/80 hover:text-white" %>
+</div>
+
+<% if @feature.feature_resources.empty? %>
+  <div class="flex items-center justify-center h-64">
+    <h1 class="text-2xl text-cyan-900">No resources found</h1>
+  </div>
+<% else %>
+  <table class="border-collapse w-full border border-slate-400 dark:border-slate-500 bg-white dark:bg-slate-800 text-sm shadow-sm mt-5">
+    <thead class="bg-slate-50 dark:bg-slate-700">
+      <tr>
+        <th class="w-1/2 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">Resource ID</th>
+        <th class="w-1/2 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @feature.feature_resources.each do |item| %>
+        <tr>
+          <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+            <%= item.resource[:uid] %>
+          </td>
+          <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+            <%= form_with url: delete_feature_resource_path(@feature.id, item.resource[:uid]), method: :delete do |f| %>
+              <%= f.submit "Disconect", class: "p-3 rounded text-center hover:bg-cyan-900/80 hover:text-white" %>
+            <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
