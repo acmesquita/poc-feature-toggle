@@ -5,9 +5,8 @@
 </div>
 
 <%= form_with url: features_path do |form| %>
-  <div class="flex flex-col gap-1">
-    <%= form.label :flag, "Flag", class:"text-cyan-900" %>
-    <%= form.text_field :flag, class:"rounded" %>
+  <div class="flex flex-col gap-1 mt-4">
+    <%= form.text_field :flag, placeholder:"Flag", class:"rounded" %>
     <%= form.submit "Create", class:"p-3 rounded border bg-cyan-900	text-white w-[150px] text-center hover:bg-cyan-800 cursor-pointer mt-4" %>
   </div>
 <% end %>
