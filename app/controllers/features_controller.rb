@@ -13,4 +13,10 @@ class FeaturesController < ApplicationController
 
     redirect_to features_path if @feature.valid?
   end
+
+  def destroy
+    @result = ::DeleteFeature.perfom(params)
+
+    redirect_to features_path if @result
+  end
 end

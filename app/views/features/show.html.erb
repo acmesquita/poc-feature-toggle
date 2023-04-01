@@ -26,6 +26,7 @@
             <%= form_with url: delete_feature_resource_path(@feature.id, item.resource[:uid]), method: :delete do |f| %>
               <%= f.submit "Disconect", class: "p-3 rounded text-center hover:bg-cyan-900/80 hover:text-white" %>
             <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

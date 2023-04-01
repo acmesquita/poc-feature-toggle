@@ -14,4 +14,8 @@ class FeatureRepository
   def self.find(id)
     Feature.find(id)
   end
+
+  def self.destroy(id)
+    Feature.destroy(id)
+  end
 end

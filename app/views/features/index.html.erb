@@ -9,6 +9,7 @@
     <tr>
       <th class="w-1/2 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">Flag</th>
       <th class="w-1/2 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">Resources Count</th>
+      <th class="w-1/2 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,11 @@
         <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
           <%= item[:resources_count] %>
         </td>
+        <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+            <%= form_with url: feature_path(item[:id]), method: :delete do |f| %>
+              <%= f.submit "Delete", class: "p-3 rounded text-center hover:bg-cyan-900/80 hover:text-white" %>
+            <% end %>
+          </td>
       </tr>
     <% end %>
   </tbody>
