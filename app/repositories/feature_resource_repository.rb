@@ -2,7 +2,7 @@ class FeatureResourceRepository
 
   def self.find_by(flag,uid)
     FeatureResource.find_by_sql([
-      "SELECT 
+      "SELECT
         features.flag as flag,
         feature_resources.value as value
       FROM

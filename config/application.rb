@@ -34,8 +34,8 @@ module PocToggle
     # Don't generate system test files.
     config.generators.system_tests = nil
 
-    config.autoload_paths << Rails.root.join('app/presenters')
     config.autoload_paths << Rails.root.join('app/repositories')
     config.autoload_paths << Rails.root.join('app/services')
+    config.autoload_paths << Rails.root.join('app/presenters')
   end
 end
