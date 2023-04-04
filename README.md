@@ -54,3 +54,9 @@ Start server
 ```
 docker compose up
 ```
+
+Watching changes in css
+
+```
+docker compose run --rm web bundle exec rails tailwindcss:watch
+```
