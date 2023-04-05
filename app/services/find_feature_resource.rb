@@ -1,5 +1,4 @@
-class FindFeatureResource
-  include ActiveModel::Validations
+class FindFeatureResource < BaseService
   validates_presence_of :flag
   validates_presence_of :resource_id
 
@@ -12,8 +11,6 @@ class FindFeatureResource
   def initialize(params)
     @flag = params[:flag]
     @resource_id = params[:resource_id]
-
-    validate!
   end
 
   def perform
