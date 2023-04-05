@@ -1,7 +1,23 @@
 class FindFeatureResource
-  def self.perform(params)
-    raise InvalidParamsError if params[:flag].blank? || params[:resource_id].blank?
+  include ActiveModel::Validations
+  validates_presence_of :flag
+  validates_presence_of :resource_id
 
-    FeatureResourceRepository.find_by(params[:flag], params[:resource_id]) || OpenStruct.new({ flag: params[:flag], value: false})
+  attr_reader :flag, :resource_id
+
+  def self.perform(params)
+    self.new(params).perform
+  end
+
+  def initialize(params)
+    @flag = params[:flag]
+    @resource_id = params[:resource_id]
+
+    validate!
+  end
+
+  def perform
+    default_feature = ActiveSupport::InheritableOptions.new({ flag: flag, value: false})
+    FeatureResourceRepository.find_by(flag, resource_id) || default_feature
   end
 end
