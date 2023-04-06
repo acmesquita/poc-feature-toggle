@@ -1,9 +1,20 @@
-class DisconectResourceToFeature
+class DisconectResourceToFeature < BaseService
+  validates_presence_of :feature_id, :uid
+
+  attr_reader :feature_id, :uid
+
   def self.perfom(params)
-    return false if params[:feature_id].blank? || params[:uid].blank?
+    new(params).perfom
+  end
 
-    resource = ResourceRepository.find_by_uid(params[:uid])
+  def initialize(params)
+    @feature_id = params[:feature_id]
+    @uid = params[:uid]
+  end
 
-    FeatureResourceRepository.disconect_resource_to_feature(params[:feature_id], resource.id)
+  def perfom
+    resource = ResourceRepository.find_by_uid(@uid)
+
+    FeatureResourceRepository.disconect_resource_to_feature(@feature_id, resource.id)
   end
 end

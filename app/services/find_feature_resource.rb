@@ -1,6 +1,5 @@
 class FindFeatureResource < BaseService
-  validates_presence_of :flag
-  validates_presence_of :resource_id
+  validates_presence_of :flag, :resource_id
 
   attr_reader :flag, :resource_id
 

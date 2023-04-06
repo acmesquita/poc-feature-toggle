@@ -34,8 +34,12 @@ class FeaturesController < ApplicationController
   end
 
   def destroy
-    @result = ::DeleteFeature.perfom(params)
+    begin
+      @result = ::DeleteFeature.perfom(params)
 
-    redirect_to features_path if @result
+      redirect_to features_path
+    rescue => exception
+      redirect_to features_path, notice: exception.message
+    end
   end
 end
