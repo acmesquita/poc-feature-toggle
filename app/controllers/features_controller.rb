@@ -11,14 +11,18 @@ class FeaturesController < ApplicationController
 
   def show
     begin
-      @feature = ::FindFeature.perfom(params[:id])
+      @feature = find_feature(params)
     rescue => exception
-      redirect_to features_path, notice: exception.message
+      redirect_to features_path, alert: exception.message
     end
   end
 
   def edit
-    @feature = ::FindFeature.perfom(params[:id])
+    begin
+      @feature = find_feature(params)
+    rescue => exception
+      redirect_to features_path, alert: exception.message
+    end
   end
 
   def update
@@ -28,18 +32,28 @@ class FeaturesController < ApplicationController
   end
 
   def create
-    @feature = CreateFeature.perfom(params)
+    begin
+      @feature = ::CreateFeature.perfom(params)
 
-    redirect_to features_path if @feature.valid?
+      redirect_to @feature, notice: 'Feature was successfully created.'
+    rescue => exception
+      redirect_to new_feature_path, alert: exception.message
+    end
   end
 
   def destroy
     begin
       @result = ::DeleteFeature.perfom(params)
 
-      redirect_to features_path
+      redirect_to features_path, notice: 'Feature was successfully destroyed.'
     rescue => exception
-      redirect_to features_path, notice: exception.message
+      redirect_to features_path, alert: exception.message
     end
+  end
+
+  private
+
+  def find_feature(params)
+    ::FindFeature.perfom(params)
   end
 end

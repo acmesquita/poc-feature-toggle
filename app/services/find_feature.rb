@@ -3,12 +3,12 @@ class FindFeature < BaseService
 
   attr_reader :feature_id
 
-  def self.perfom(feature_id)
-    self.new(feature_id).perform
+  def self.perfom(params)
+    self.new(params).perform
   end
 
-  def initialize(feature_id)
-    @feature_id = feature_id
+  def initialize(params)
+    @feature_id = params[:id]
   end
 
   def perform

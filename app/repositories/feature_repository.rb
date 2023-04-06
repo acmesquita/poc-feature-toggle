@@ -18,4 +18,8 @@ class FeatureRepository
   def self.destroy(id)
     Feature.destroy(id)
   end
+
+  def self.find_or_create(flag)
+    find_by_flag(flag) || create(flag)
+  end
 end

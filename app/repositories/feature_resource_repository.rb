@@ -35,4 +35,10 @@ class FeatureResourceRepository
     resource = Resource.create(uid: uid)
     FeatureResource.create(feature_id: feature_id, resource: resource)
   end
+
+  def self.add_resources_to_feature!(feature, resource_ids)
+    resource_ids.map do |resource_id|
+      find_or_create(feature.id, resource_id)
+    end
+  end
 end

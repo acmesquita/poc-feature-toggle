@@ -13,8 +13,8 @@ class DisconectResourceToFeature < BaseService
   end
 
   def perfom
-    resource = ResourceRepository.find_by_uid(@uid)
+    resource = ResourceRepository.find_by_uid(uid)
 
-    FeatureResourceRepository.disconect_resource_to_feature(@feature_id, resource.id)
+    FeatureResourceRepository.disconect_resource_to_feature(feature_id, resource.id)
   end
 end
