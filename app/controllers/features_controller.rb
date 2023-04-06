@@ -2,7 +2,9 @@ class FeaturesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @result = ::ListAllFeatures.perfom
+    @features = ::ListAllFeatures.perfom
+
+    @result = ::ListAllFeaturesPresenter.new(@features).call
   end
 
   def new

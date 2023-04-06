@@ -1,7 +1,5 @@
 class ListAllFeatures
   def self.perfom
-    features = FeatureRepository.find_all
-
-    ::ListAllFeaturesPresenter.new(features).call
+    FeatureRepository.find_all
   end
 end
