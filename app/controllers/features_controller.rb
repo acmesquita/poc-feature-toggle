@@ -10,7 +10,11 @@ class FeaturesController < ApplicationController
   end
 
   def show
-    @feature = ::FindFeature.perfom(params[:id])
+    begin
+      @feature = ::FindFeature.perfom(params[:id])
+    rescue => exception
+      redirect_to features_path, notice: exception.message
+    end
   end
 
   def edit
